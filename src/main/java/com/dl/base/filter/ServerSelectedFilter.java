@@ -28,10 +28,9 @@ public class ServerSelectedFilter<T extends DiscoveryEnabledServer> extends Zone
         if (StringUtils.isNotEmpty(appName)) {
             String groupName = serviceDependConfig.getGroupName(appName);
             if (StringUtils.isNotEmpty(groupName)) {
-            	List<T> list = servers;
-//                List<T> list = servers.stream()
-//                        .filter(server -> Objects.equals(server.getInstanceInfo().getAppGroupName(), groupName))
-//                        .collect(Collectors.toList());
+                List<T> list = servers.stream()
+                        .filter(server -> Objects.equals(server.getInstanceInfo().getAppGroupName(), groupName))
+                        .collect(Collectors.toList());
                 log.debug("应用 {} 依赖的组为 {}，可用的服务列表为：{}", appName, groupName, list);
                 return super.getFilteredListOfServers(list);
 
