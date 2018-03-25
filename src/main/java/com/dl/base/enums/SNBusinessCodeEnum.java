@@ -2,7 +2,10 @@ package com.dl.base.enums;
 
 public enum SNBusinessCodeEnum {
 	ORDER_SN(1, "订单sn"),
-	ORDER_PARENT_SN(2, "订单父sn");
+	ORDER_PARENT_SN(2, "订单父sn"),
+	ACCOUNT_SN(7, "流水单sn"),
+	WITHDRAW_SN(8, "提现单sn"),
+	RECHARGE_SN(9, "充值单sn");
 
 	public int getCode() {
 		return code;
