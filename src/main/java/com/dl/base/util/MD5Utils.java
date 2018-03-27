@@ -3,7 +3,7 @@ package com.dl.base.util;
 import java.security.MessageDigest;
 
 public class MD5Utils {
-    private static String MD5(String str) {
+    public static String MD5(String str) {
         String result = "";
         try {
             MessageDigest md5 = MessageDigest.getInstance("MD5");
@@ -36,7 +36,7 @@ public class MD5Utils {
         String s2 = MD5(s1 + str2);
         return s2;
     }
-
+    
     public static String salt() {
         String s1 = (int) ((Math.random() * 9 + 1) * 100000) + "";
         return s1;
