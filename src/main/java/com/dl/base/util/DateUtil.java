@@ -11,10 +11,28 @@ public class DateUtil {
     public static final DateTimeFormatter date_sdf_ch = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
     public static final DateTimeFormatter time_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     public static final DateTimeFormatter yyyymmddhhmmss = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-    public static final DateTimeFormatter short_time_sdf = DateTimeFormatter.ofPattern("HH:mm");
+    public static final DateTimeFormatter short_time_sdf = DateTimeFormatter.ofPattern("HH:mm:ss");
     public static final DateTimeFormatter datetimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final String[] weekDays = { "周一", "周二", "周三", "周四", "周五", "周六","周日"};
 
+    /**
+     * 时间是否在一周之内
+     * @param addtime
+     * @param now
+     * @return
+     */
+    public static boolean isLatestWeek(Date addtime,Date now){  
+        Calendar calendar = Calendar.getInstance();  //得到日历  
+        calendar.setTime(now);//把当前时间赋给日历  
+        calendar.add(Calendar.DAY_OF_MONTH, -7);  //设置为7天前  
+        Date before7days = calendar.getTime();   //得到7天前的时间  
+        if(before7days.getTime() < addtime.getTime()){  
+            return true;  
+        }else{  
+            return false;  
+        }  
+    } 
+    
     /**
      * 获取到截止时间为止的秒数，1970-01-01开始
      *

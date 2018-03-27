@@ -43,7 +43,17 @@ public class RandomUtil {
      */  
     public static String generateLowerString(int length) {  
         return generateMixString(length).toLowerCase();  
-    }  
+    } 
+    
+    public static String generateStarString(int length) {  
+        StringBuffer sb = new StringBuffer();  
+        Random random = new Random();  
+        for (int i = 0; i < length; i++) {  
+            sb.append("*");  
+        }  
+        return sb.toString();  
+    }
+    
   
     /** 
      * 由大写字母组成的随机字符串 
