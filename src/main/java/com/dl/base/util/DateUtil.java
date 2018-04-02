@@ -1,5 +1,6 @@
 package com.dl.base.util;
 
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -10,11 +11,17 @@ public class DateUtil {
     public static final DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
     public static final DateTimeFormatter date_sdf_ch = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
     public static final DateTimeFormatter time_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static final DateTimeFormatter ymd_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     public static final DateTimeFormatter yyyymmddhhmmss = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
     public static final DateTimeFormatter short_time_sdf = DateTimeFormatter.ofPattern("HH:mm:ss");
     public static final DateTimeFormatter datetimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final String[] weekDays = { "周一", "周二", "周三", "周四", "周五", "周六","周日"};
 
+    public static String getYMD(Date date) {
+        SimpleDateFormat sdf =   new SimpleDateFormat("MM-dd HH:mm"); 
+        return sdf.format(date); 
+    }
+    
     /**
      * 时间是否在一周之内
      * @param addtime
