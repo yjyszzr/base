@@ -65,7 +65,13 @@ public class DateUtil {
         Instant instant = time.atZone(ZoneId.systemDefault()).toInstant();
         return Math.toIntExact(instant.getEpochSecond());
     }
-
+    
+    public static Integer getCurrentTimeLong(Long lepochSecond) {
+    	LocalDateTime time = LocalDateTime.ofEpochSecond(lepochSecond, 0, ZoneOffset.of("+08:00"));
+        Instant instant = time.atZone(ZoneId.systemDefault()).toInstant();
+        return Math.toIntExact(instant.getEpochSecond());
+    }
+    
     /**
      * 根据格式获取，秒数，获取日期
      *
