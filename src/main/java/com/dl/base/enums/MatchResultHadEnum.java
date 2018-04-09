@@ -2,9 +2,9 @@ package com.dl.base.enums;
 
 public enum MatchResultHadEnum {
 	
-	HAD_H(3, "胜"),
-	HAD_D(1, "平"),
-	HAD_A(0, "负");
+	HAD_H(3, "主胜"),
+	HAD_D(1, "平局"),
+	HAD_A(0, "客胜");
 	
 	private Integer code;
 	private String msg;
