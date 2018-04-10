@@ -16,6 +16,24 @@ public enum MatchBetTypeEnum {
         this.code = code;
         this.msg = msg;
     }
+    
+    public static String getName(String index) {
+		for(MatchBetTypeEnum lwd: MatchBetTypeEnum.values()) {
+			if(lwd.getcode().equals(index)) {
+				return lwd.getMsg();
+			}
+		}
+		return null;
+	}
+	
+	public static String getCode(String value) {
+		for(MatchBetTypeEnum lwd: MatchBetTypeEnum.values()) {
+			if(lwd.getMsg().equals(value)) {
+				return lwd.getcode();
+			}
+		}
+		return null;
+	}
 
     public String getcode() {
         return code;
