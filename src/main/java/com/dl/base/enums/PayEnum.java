@@ -1,0 +1,54 @@
+package com.dl.base.enums;
+
+public enum PayEnum {
+	
+	
+    ALIPAY(0, "支付宝支付"),
+    WEIXINPAY(1, "微信支付"),
+    YUEPAY(2, "余额支付"),
+    MIXPAY(3, "混合支付");
+
+	
+	private Integer code;
+	private String msg;
+	
+	private PayEnum(Integer code, String msg) {
+		this.code = code;
+		this.msg = msg;
+	}
+
+	public static String getName(Integer index) {
+		for(PayEnum lwd: PayEnum.values()) {
+			if(lwd.getCode().equals(index)) {
+				return lwd.getMsg();
+			}
+		}
+		return null;
+	}
+	
+	public static Integer getCode(String value) {
+		for(PayEnum lwd: PayEnum.values()) {
+			if(lwd.getMsg().equals(value)) {
+				return lwd.getCode();
+			}
+		}
+		return null;
+	}
+	
+	public Integer getCode() {
+		return code;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+}
