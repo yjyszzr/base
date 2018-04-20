@@ -18,7 +18,7 @@ public class DateUtil {
     public static final String[] weekDays = { "周一", "周二", "周三", "周四", "周五", "周六","周日"};
 
     public static String getYMD(Date date) {
-        SimpleDateFormat sdf =   new SimpleDateFormat("MM-dd HH:mm"); 
+        SimpleDateFormat sdf =   new SimpleDateFormat("MM月dd日 HH:mm"); 
         return sdf.format(date); 
     }
     
