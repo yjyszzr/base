@@ -217,7 +217,7 @@ public class NetWorkUtil {
 	public static String doGet(String url, Map params, String charset) {
 		String ret = "";
 		try {
-			ret = doGet(url, params, charset, 10000, 10000, true);
+			ret = doGet(url, params, charset, 50000, 50000, true);
 		} catch (HttpException e) {
 			logger.warn("", e);
 		} catch (IOException e) {
@@ -261,7 +261,8 @@ public class NetWorkUtil {
 			int statusCode = client.executeMethod(method);
 			if (statusCode == HttpStatus.SC_OK) {
 				InputStream responseBodyAsStream = method.getResponseBodyAsStream();
-				reader = new BufferedReader(new InputStreamReader(responseBodyAsStream, charset));
+				InputStreamReader in = new InputStreamReader(responseBodyAsStream, charset);
+				reader = new BufferedReader(in);
 				String line;
 				while ((line = reader.readLine()) != null) {
 					if (pretty) {
