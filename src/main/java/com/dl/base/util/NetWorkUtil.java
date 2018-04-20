@@ -36,6 +36,7 @@ public class NetWorkUtil {
 	public static void main(String[] args) {
 
 		try {
+			
 		} catch (Exception e) {
 			logger.error("exception");
 			e.printStackTrace();
@@ -259,7 +260,8 @@ public class NetWorkUtil {
 		try {
 			int statusCode = client.executeMethod(method);
 			if (statusCode == HttpStatus.SC_OK) {
-				reader = new BufferedReader(new InputStreamReader(method.getResponseBodyAsStream(), charset));
+				InputStream responseBodyAsStream = method.getResponseBodyAsStream();
+				reader = new BufferedReader(new InputStreamReader(responseBodyAsStream, charset));
 				String line;
 				while ((line = reader.readLine()) != null) {
 					if (pretty) {
