@@ -86,5 +86,32 @@ public class NuclearUtil {
         System.out.println("getsSame total times "+(System.nanoTime()-st));
         return same;
     }
+    
+    
+	/**
+	 * 使用的前提示两个集合数量相同
+     * 判断两个集合是否完全相同, list1 是否与  list2 相同
+     * @param list1
+     * @param list2
+     * @return
+     */
+    public static Boolean isSame(List<String> list1, List<String> list2) {
+        Boolean sameBz = true;
+        Map<String,Integer> map = new HashMap<String,Integer>(list1.size()+list2.size());
+        for (String string : list1) {
+            map.put(string, 1);
+        }
+        
+        for (String string : list2) {
+            Integer cc = map.get(string);
+            if(cc == null)
+            {
+            	sameBz = false;
+                break;
+            }
+        }
+        
+        return sameBz;
+    }
 
 }
