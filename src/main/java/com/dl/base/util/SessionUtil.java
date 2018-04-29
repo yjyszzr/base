@@ -1,7 +1,8 @@
 package com.dl.base.util;
 
-import com.dl.base.model.Address;
 import com.dl.base.context.BaseContextHandler;
+import com.dl.base.model.Address;
+import com.dl.base.model.UserDeviceInfo;
 
 /**
  * 会话管理工具类
@@ -32,5 +33,13 @@ public class SessionUtil {
         return BaseContextHandler.getAddress();
     }
 
+    /**
+     * 获取当前用户设备信息
+     *
+     * @return 设备信息
+     */
+    public static UserDeviceInfo getUserDevice() {
+    	return BaseContextHandler.getUserDeviceInfo();
+    }
 
 }

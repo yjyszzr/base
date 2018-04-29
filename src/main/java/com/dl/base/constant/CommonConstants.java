@@ -27,4 +27,7 @@ public class CommonConstants {
     
     public static final Integer BUSINESS_ID_REWARD = 9;
     public static final Integer BUSINESS_ID_WITHDRAW = 8;
+    
+    public static final String HTTP_HEADER_DEVICE = "dl-device";
+    public static final String CONTEXT_KEY_USER_DEVICE = "currentUserDevice";
 }

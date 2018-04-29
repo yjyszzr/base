@@ -1,11 +1,12 @@
 package com.dl.base.context;
 
 
-import com.dl.base.model.Address;
-import com.dl.base.constant.CommonConstants;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import com.dl.base.constant.CommonConstants;
+import com.dl.base.model.Address;
+import com.dl.base.model.UserDeviceInfo;
 
 /**
  * Created by ace on 2017/9/8.
@@ -89,4 +90,11 @@ public class BaseContextHandler {
         threadLocal.remove();
     }
 
+    public static UserDeviceInfo getUserDeviceInfo() {
+        return (UserDeviceInfo) get(CommonConstants.CONTEXT_KEY_USER_DEVICE);
+    }
+
+    public static void setAddress(UserDeviceInfo deviceInfo) {
+        set(CommonConstants.CONTEXT_KEY_USER_DEVICE, deviceInfo);
+    }
 }
