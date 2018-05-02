@@ -6,7 +6,8 @@ public enum SNBusinessCodeEnum {
 	TICKET_SN(3, "出票单sn"),
 	ACCOUNT_SN(7, "流水单sn"),
 	WITHDRAW_SN(8, "提现单sn"),
-	RECHARGE_SN(9, "充值单sn");
+	RECHARGE_SN(9, "充值单sn"),
+	PAY_SN(10, "支付单sn");
 
 	public int getCode() {
 		return code;
