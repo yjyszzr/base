@@ -1,6 +1,7 @@
 package com.dl.base.enums;
 
 public enum MatchBetTypeEnum {
+	BET_TYPE_11("11","单关"),
 	BET_TYPE_21("21","2串1"),
 	BET_TYPE_31("31","3串1"),
 	BET_TYPE_41("41","4串1"),
