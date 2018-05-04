@@ -4,6 +4,7 @@ public enum SNBusinessCodeEnum {
 	ORDER_SN(1, "订单sn"),
 	ORDER_PARENT_SN(2, "订单父sn"),
 	TICKET_SN(3, "出票单sn"),
+	BONUS_SN(6, "红包sn"),
 	ACCOUNT_SN(7, "流水单sn"),
 	WITHDRAW_SN(8, "提现单sn"),
 	RECHARGE_SN(9, "充值单sn"),
