@@ -1,13 +1,16 @@
 package com.dl.base.util;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class DateUtil {
     public static final DateTimeFormatter date_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final DateTimeFormatter date_sdf_second_zero = DateTimeFormatter.ofPattern("yyyy-MM-dd 0:0:0");
     public static final DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
     public static final DateTimeFormatter date_sdf_ch = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
     public static final DateTimeFormatter time_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -39,6 +42,43 @@ public class DateUtil {
             return false;  
         }  
     } 
+    
+    /**
+     * 获取当前时间之后过多少天后零点前的时间
+     * @param currentTime
+     * @param dayNum
+     * @return
+     */
+    public static Integer getTimeAfterDays(Date currentTime,Integer dayNum) {
+    	if(1 == dayNum) {
+    		return getCurrentTimeLong();
+    	}
+    	
+    	Calendar calendar = Calendar.getInstance();  
+    	calendar.setTime(currentTime);
+    	calendar.add(Calendar.DAY_OF_MONTH, dayNum - 1); 
+    	calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
+        Long millions = calendar.getTimeInMillis()/1000;
+
+		return millions.intValue();
+    }
+    
+    /**
+     * 获取指定时间的时间，单位s
+     * @param currentTime
+     * @param dayNum
+     * @return
+     */
+    public static Integer getTimeSomeDate(Date currentTime) {
+    	Calendar calendar = Calendar.getInstance();  
+    	calendar.setTime(currentTime);
+    	calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH), 
+    			calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), calendar.get(Calendar.SECOND));
+        Long millions = calendar.getTimeInMillis()/1000;
+		return millions.intValue();
+    }
+    
+
     
     /**
      * 获取到截止时间为止的秒数，1970-01-01开始
