@@ -6,9 +6,11 @@ public enum PayEnum {
     ALIPAY(0, "支付宝支付"),
     WEIXINPAY(1, "微信支付"),
     YUEPAY(2, "余额支付"),
-    MIXPAY(3, "混合支付");
+    MIXPAY(3, "混合支付"),
+    RONGBAOPAY(4, "融宝支付"),
+    PAY_ROLLBACK(5, "购彩失败-资金退回");
 
-	
+
 	private Integer code;
 	private String msg;
 	
