@@ -113,6 +113,22 @@ public class ResultGenerator {
      * @param <T>  泛型
      * @return 结果
      */
+    public static <T> BaseResult<T> genResult(Integer code, String msg, T data) {
+        BaseResult<T> baseResult = new BaseResult<>();
+        baseResult.setMsg(msg);
+        baseResult.setCode(code);
+        baseResult.setData(data);
+        return baseResult;
+    }
+    
+    /**
+     * 生成响应结果
+     *
+     * @param code 编码
+     * @param msg  提示信息
+     * @param <T>  泛型
+     * @return 结果
+     */
     public static <T> BaseResult<T> genResult(Integer code, String msg) {
         BaseResult<T> baseResult = new BaseResult<>();
         baseResult.setMsg(msg);
