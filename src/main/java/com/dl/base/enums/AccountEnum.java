@@ -1,6 +1,6 @@
 package com.dl.base.enums;
 
-public enum PayEnum {
+public enum AccountEnum {
 	
 	
     ALIPAY(0, "支付宝支付"),
@@ -8,19 +8,21 @@ public enum PayEnum {
     YUEPAY(2, "余额支付"),
     MIXPAY(3, "混合支付"),
     RONGBAOPAY(4, "融宝支付"),
-    PAY_ROLLBACK(5, "资金已退回");
+    PAY_ROLLBACK(5, "资金已退回"),
+	REWARD(6, "派奖"),
+	WITHDRAW(7, "提现");
 
 
 	private Integer code;
 	private String msg;
 	
-	private PayEnum(Integer code, String msg) {
+	private AccountEnum(Integer code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}
 
 	public static String getName(Integer index) {
-		for(PayEnum lwd: PayEnum.values()) {
+		for(AccountEnum lwd: AccountEnum.values()) {
 			if(lwd.getCode().equals(index)) {
 				return lwd.getMsg();
 			}
@@ -29,7 +31,7 @@ public enum PayEnum {
 	}
 	
 	public static Integer getCode(String value) {
-		for(PayEnum lwd: PayEnum.values()) {
+		for(AccountEnum lwd: AccountEnum.values()) {
 			if(lwd.getMsg().equals(value)) {
 				return lwd.getCode();
 			}
