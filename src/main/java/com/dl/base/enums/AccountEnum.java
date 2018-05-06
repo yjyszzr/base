@@ -2,29 +2,37 @@ package com.dl.base.enums;
 
 public enum AccountEnum {
 	
-	
-    ALIPAY(0, "支付宝支付"),
-    WEIXINPAY(1, "微信支付"),
-    YUEPAY(2, "余额支付"),
-    MIXPAY(3, "混合支付"),
-    RONGBAOPAY(4, "融宝支付"),
-    PAY_ROLLBACK(5, "资金已退回"),
-	REWARD(6, "派奖"),
-	WITHDRAW(7, "提现");
-
+	//1-奖金 2-充值 3-购彩 4-提现 5-红包 6-账户回滚
+	REWARD(1, "奖金","奖"),
+    RECHARGE(2, "充值","充"),
+    BUYPAY(3, "购彩","购"),
+    WITHDRAW(4, "提现","提"),
+    BONUS(5, "红包","红"),
+    MONEY_ROLLBACK(6, "资金已退回","退");
 
 	private Integer code;
 	private String msg;
+	private String shortStr;
 	
-	private AccountEnum(Integer code, String msg) {
+	private AccountEnum(Integer code, String msg,String shortStr) {
 		this.code = code;
 		this.msg = msg;
+		this.shortStr = shortStr;
 	}
 
 	public static String getName(Integer index) {
-		for(AccountEnum lwd: AccountEnum.values()) {
-			if(lwd.getCode().equals(index)) {
-				return lwd.getMsg();
+		for(AccountEnum ae: AccountEnum.values()) {
+			if(ae.getCode().equals(index)) {
+				return ae.getMsg();
+			}
+		}
+		return null;
+	}
+	
+	public static String getShortStr(Integer index) {
+		for(AccountEnum ae: AccountEnum.values()) {
+			if(ae.getCode().equals(index)) {
+				return ae.getShortStr();
 			}
 		}
 		return null;
@@ -53,6 +61,14 @@ public enum AccountEnum {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+	
+	public void setShortStr(String shortStr) {
+		this.shortStr = shortStr;
+	}
+	
+	public String getShortStr() {
+		return shortStr;
 	}
 
 }
