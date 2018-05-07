@@ -2,7 +2,6 @@ package com.dl.base.enums;
 
 public enum ThirdApiEnum {
 	
-	
     RONG_BAO(1, "融宝"),
     YIN_HE(2, "银河"),
     JU_HE(3, "聚合"),
