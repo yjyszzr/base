@@ -36,7 +36,7 @@ public class CommonConstants {
     public static final String FORMAT_REWARD_TITLE = "中奖通知";
     public static final String FORMAT_REWARD_CONTENT = "中奖{0}元";
     public static final String FORMAT_REWARD_CONTENT_DESC = "已打入您的余额";
-    public static final String FORMAT_REWARD_MSG_DESC = "彩种：足彩/n投注金额：{0}元/n投注时间：{1}";
+    public static final String FORMAT_REWARD_MSG_DESC = "彩种：足彩#投注金额：{0}元#投注时间：{1}";
     public static final String FORMAT_REWARD_DESC = "恭喜您购买的{0}中了{1}元";
     
     public static final String FORMAT_PRINTLOTTERY_TITLE = "出票失败";
