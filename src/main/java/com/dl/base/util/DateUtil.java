@@ -49,15 +49,15 @@ public class DateUtil {
      * @param dayNum
      * @return
      */
-    public static Integer getTimeAfterDays(Date currentTime,Integer dayNum) {
-    	if(1 == dayNum) {
-    		return getCurrentTimeLong();
+    public static Integer getTimeAfterDays(Date currentTime,Integer dayNum,int h,int m,int s) {
+    	if(0 == dayNum) {
+    		dayNum = 1;
     	}
-    	
+
     	Calendar calendar = Calendar.getInstance();  
     	calendar.setTime(currentTime);
     	calendar.add(Calendar.DAY_OF_MONTH, dayNum - 1); 
-    	calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH), 23, 59, 59);
+    	calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH), h, m, s);
         Long millions = calendar.getTimeInMillis()/1000;
 
 		return millions.intValue();
