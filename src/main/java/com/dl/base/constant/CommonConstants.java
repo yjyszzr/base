@@ -32,7 +32,8 @@ public class CommonConstants {
     public static final String CONTEXT_KEY_USER_DEVICE = "currentUserDevice";
     
     //消息模板
-//    public static final String FORMAT_REWARD_TITLE = "中奖啦";
+    public static final String FORMAT_REWARD_PUSH_TITLE = "中奖啦";
+    public static final String FORMAT_REWARD_PUSH_DESC = "恭喜您购买的【竞彩足球】中了{0}元";
     public static final String FORMAT_REWARD_TITLE = "中奖通知";
     public static final String FORMAT_REWARD_CONTENT = "中奖{0}元";
     public static final String FORMAT_REWARD_CONTENT_DESC = "中奖金额已打入您的余额";
@@ -53,8 +54,8 @@ public class CommonConstants {
     public static final String FORMAT_WITHDRAW_FAIL_CONTENT_DESC = "提现成功";
     public static final String FORMAT_WITHDRAW_MSG_DESC = "申请时间：{0}#审核通过时间：{1}元#提现成功时间：{2}";
     
-//    public static final String FORMAT_PRINTLOTTERY_TITLE = "出票失败";
-//    public static final String FORMAT_PRINTLOTTERY_DESC = "抱歉，您购买的{0}出票失败，请重新购买";
+    public static final String FORMAT_PRINTLOTTERY_PUSH_TITLE = "出票失败";
+    public static final String FORMAT_PRINTLOTTERY_PUSH_DESC = "抱歉，您购买的【竞彩足球】出票失败，请重新购买";
     
     public static final String FORMAT_BONUS_TITLE = "优惠券到期通知";
     public static final String FORMAT_BONUS_DESC = "您有优惠券即将到期，请尽快使用";
