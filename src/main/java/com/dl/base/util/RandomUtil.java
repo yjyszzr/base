@@ -138,4 +138,29 @@ public class RandomUtil {
 		Random r = new Random();
 		return from + r.nextInt(to - from);
 	}
+	
+	/**
+	 * 根据概率赶回红包金额
+	 * @param r1
+	 * @param r2
+	 * @param r3
+	 * @param b1
+	 * @param b2
+	 * @param b3
+	 * @return
+	 */
+	public static Double randomBonusPrice(double r1,double r2,double r3,double b1,double b2,double b3) {
+		Double bonusPrice = 0.00;
+		double randomNum = Math.random();  
+		if(randomNum < r1) {
+			return b1;
+		}else if(randomNum < r1 + r2) {
+			return b2;
+		}else if(randomNum < r1 + r2 + r3) {
+			return b3;
+		}
+		
+		return bonusPrice;
+	}
+	
 }
