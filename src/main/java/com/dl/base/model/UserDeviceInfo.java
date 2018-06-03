@@ -53,4 +53,7 @@ public class UserDeviceInfo implements Serializable{
 	 
 	 @ApiModelProperty(value = "用户账号验证串,用于验证用户id真实性")
 	 private String token;
+	 
+	 @ApiModelProperty(value = "用户ip")
+	 private String userIp;
 }
