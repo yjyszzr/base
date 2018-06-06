@@ -56,4 +56,7 @@ public class UserDeviceInfo implements Serializable{
 	 
 	 @ApiModelProperty(value = "用户ip")
 	 private String userIp;
+	 
+	 @ApiModelProperty(value = "广告唯一标识")
+	 private String IDFA;
 }
