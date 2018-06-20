@@ -7,6 +7,7 @@ import lombok.Data;
  * @author zzr
  *
  */
+
 @Data
 public class EmptyParam {
 
