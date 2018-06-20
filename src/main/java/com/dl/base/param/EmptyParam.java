@@ -1,5 +1,7 @@
 package com.dl.base.param;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -7,8 +9,10 @@ import lombok.Data;
  * @author zzr
  *
  */
-
+@ApiModel("空参数信息")
 @Data
 public class EmptyParam {
 
+	@ApiModelProperty("空参数信息")
+    private String emptyStr;
 }
