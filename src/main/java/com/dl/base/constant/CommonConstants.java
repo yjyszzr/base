@@ -48,11 +48,12 @@ public class CommonConstants {
     
     //提现成功
     public static final String FORMAT_WITHDRAW_SUC_TITLE = "提现成功通知";
-    public static final String FORMAT_WITHDRAW_FAIL_TITLE = "提现成功通知";
+    public static final String FORMAT_WITHDRAW_FAIL_TITLE = "提现失败通知";
     public static final String FORMAT_WITHDRAW_CONTENT = "提现{0}元";
     public static final String FORMAT_WITHDRAW_SUC_CONTENT_DESC = "提现成功";
-    public static final String FORMAT_WITHDRAW_FAIL_CONTENT_DESC = "提现成功";
+    public static final String FORMAT_WITHDRAW_FAIL_CONTENT_DESC = "提现失败";
     public static final String FORMAT_WITHDRAW_MSG_DESC = "申请时间：{0}#审核通过时间：{1}#提现成功时间：{2}";
+    public static final String FORMAT_WITHDRAW_MSG_FAIL_DESC = "申请时间：{0}#审核时间：{1}#提现失败时间：{2}";
     
     public static final String FORMAT_PRINTLOTTERY_PUSH_TITLE = "出票失败";
     public static final String FORMAT_PRINTLOTTERY_PUSH_DESC = "抱歉，您购买的【竞彩足球】出票失败，请重新购买";
