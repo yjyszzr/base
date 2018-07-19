@@ -4,8 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 
 public class DateUtil {
@@ -42,6 +44,45 @@ public class DateUtil {
             return false;  
         }  
     } 
+    
+    /**
+     * 获取前多少天的所有日期，不包含当天
+     * @param date
+     * @param beforeDays
+     * @return
+     */
+    public static List<String> getBeforeDatePeriod(Date date, int beforeDays){  
+        List<String> datePeriodList = new ArrayList<String>();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+        Calendar cal = Calendar.getInstance();  
+        cal.setTime(date);  
+        int inputDayOfYear = cal.get(Calendar.DAY_OF_YEAR);  
+        for(int i=beforeDays-1;i>0;i--){  
+            cal.set(Calendar.DAY_OF_YEAR , inputDayOfYear-i);  
+            datePeriodList.add(dateFormat.format(cal.getTime()));  
+        }  
+        return datePeriodList;  
+    } 
+    
+    /**
+     * 获取后多少天的所有日期，不包含当天
+     * @param date
+     * @param beforeDays
+     * @return
+     */
+    public static List<String> getAfterDatePeriod(Date date, int beforeDays){  
+        List<String> datePeriodList = new ArrayList<String>();  
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");  
+        Calendar cal = Calendar.getInstance();  
+        cal.setTime(date);  
+        int inputDayOfYear = cal.get(Calendar.DAY_OF_YEAR);  
+        for(int i=1;i<=3;i++){  
+            cal.set(Calendar.DAY_OF_YEAR , inputDayOfYear+i);  
+            datePeriodList.add(dateFormat.format(cal.getTime()));  
+        }  
+        return datePeriodList;  
+    }
+    
     
     /**
      * 获取当前时间之后过多少天后零点前的时间
@@ -162,6 +203,15 @@ public class DateUtil {
      */
     public static String getCurrentDateTime() {
         return getCurrentDateTime(LocalDateTime.now(), datetimeFormat);
+    }
+    
+    /**
+     * 默认时间格式的当前时间 yyyy-MM-dd HH:mm
+     *
+     * @return
+     */
+    public static String getCurrentTimeUtilMinute() {
+        return getCurrentDateTime(LocalDateTime.now(), time_sdf);
     }
 
     public static String getCurrentDateTime(LocalDateTime now, DateTimeFormatter pattern) {
