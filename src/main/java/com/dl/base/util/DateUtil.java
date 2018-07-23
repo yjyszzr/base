@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.http.impl.execchain.MainClientExec;
+
 
 public class DateUtil {
     public static final DateTimeFormatter date_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -143,6 +145,18 @@ public class DateUtil {
      */
     public static Integer getCurrentTimeLong() {
         LocalDateTime time = LocalDateTime.now();
+        Instant instant = time.atZone(ZoneId.systemDefault()).toInstant();
+        return Math.toIntExact(instant.getEpochSecond());
+    }
+    
+    /**
+     * 获取某个时间字符串对应的时间戳
+     * @param dateStr
+     * @param df
+     * @return
+     */
+    public static Integer getSomeTimeLong(String dateStr,DateTimeFormatter df) {
+    	LocalDateTime time = LocalDateTime.parse(dateStr, df);
         Instant instant = time.atZone(ZoneId.systemDefault()).toInstant();
         return Math.toIntExact(instant.getEpochSecond());
     }
@@ -332,6 +346,27 @@ public class DateUtil {
         int weekDay = dateTime.getDayOfWeek().getValue();
         return weekDays[weekDay-1];
     }
+    
+    /**
+     * 获取localDateTime
+     * @param dateTimeStr
+     * @param pattern
+     * @return
+     */
+    public static LocalDateTime parseLocalDateTime(String dateTimeStr, DateTimeFormatter pattern) {
+        return LocalDateTime.parse(dateTimeStr, pattern);
+    }
+    
+    /**
+     * 获取localDate
+     * @param dateTimeStr
+     * @param pattern
+     * @return
+     */
+    public static LocalDate parseLocalDate(String dateStr, DateTimeFormatter pattern) {
+        return LocalDate.parse(dateStr, pattern);
+    }
+    
     /**
      * 获取当前日期是星期几<br>
      * @return 当前日期是星期几
