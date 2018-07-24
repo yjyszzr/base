@@ -1,6 +1,7 @@
 package com.dl.base.util;
 
 import java.text.DateFormat;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -59,7 +60,7 @@ public class DateUtil {
         Calendar cal = Calendar.getInstance();  
         cal.setTime(date);  
         int inputDayOfYear = cal.get(Calendar.DAY_OF_YEAR);  
-        for(int i=beforeDays-1;i>0;i--){  
+        for(int i=beforeDays;i>0;i--){  
             cal.set(Calendar.DAY_OF_YEAR , inputDayOfYear-i);  
             datePeriodList.add(dateFormat.format(cal.getTime()));  
         }  
@@ -155,11 +156,12 @@ public class DateUtil {
      * @param df
      * @return
      */
-    public static Integer getSomeTimeLong(String dateStr,DateTimeFormatter df) {
-    	LocalDateTime time = LocalDateTime.parse(dateStr, df);
-        Instant instant = time.atZone(ZoneId.systemDefault()).toInstant();
-        return Math.toIntExact(instant.getEpochSecond());
-    }
+    public static Date strToDate(String strDate) {
+    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    	ParsePosition pos = new ParsePosition(0);
+    	Date strtodate = formatter.parse(strDate, pos);
+    	return strtodate;
+   }
     
     public static Integer getCurrentTimeLong(Long lepochSecond) {
     	LocalDateTime time = LocalDateTime.ofEpochSecond(lepochSecond, 0, ZoneOffset.of("+08:00"));
