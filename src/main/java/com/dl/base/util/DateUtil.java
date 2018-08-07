@@ -324,21 +324,57 @@ public class DateUtil {
         return Duration.between(start, dateTime);
     }
     
-    /**
-     * 获取当前日期是星期几<br>
-     * @see
-     * @param dt
-     * @return 当前日期是星期几
-     */
-    @Deprecated
-    public static String getWeekOfDate(Date dt) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(dt);
-        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-        if (w < 0)
-            w = 0;
-        return weekDays[w-1];
-    }
+	/**
+	 * <pre>
+	 * 根据指定的日期字符串获取星期几
+	 * </pre>
+	 * 
+	 * @param strDate 指定的日期字符串(yyyy-MM-dd 或 yyyy/MM/dd)
+	 * @return week
+	 *         星期几(MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY)
+	 */
+	public static String getWeekByDateStr(String strDate)
+	{
+		int year = Integer.parseInt(strDate.substring(0, 4));
+		int month = Integer.parseInt(strDate.substring(5, 7));
+		int day = Integer.parseInt(strDate.substring(8, 10));
+ 
+		Calendar c = Calendar.getInstance();
+ 
+		c.set(Calendar.YEAR, year);
+		c.set(Calendar.MONTH, month - 1);
+		c.set(Calendar.DAY_OF_MONTH, day);
+ 
+		String week = "";
+		int weekIndex = c.get(Calendar.DAY_OF_WEEK);
+		switch (weekIndex)
+		{
+		case 1:
+			week = "周日";
+			break;
+		case 2:
+			week = "周一";
+			break;
+		case 3:
+			week = "周二";
+			break;
+		case 4:
+			week = "周三";
+			break;
+		case 5:
+			week = "周四";
+			break;
+		case 6:
+			week = "周五";
+			break;
+		case 7:
+			week = "周六";
+			break;
+		}
+		return week;
+	}
+    
+    
     /**
      * 获取日期是星期几<br>
      * @param dateTime
@@ -348,6 +384,8 @@ public class DateUtil {
         int weekDay = dateTime.getDayOfWeek().getValue();
         return weekDays[weekDay-1];
     }
+    
+    
     
     /**
      * 获取localDateTime
