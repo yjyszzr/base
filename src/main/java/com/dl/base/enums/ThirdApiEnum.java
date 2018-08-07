@@ -6,7 +6,10 @@ public enum ThirdApiEnum {
     YIN_HE(2, "银河"),
     JU_HE(3, "聚合"),
     ALI_DAYU(4, "阿里大于"),
-    HE_NAN_LOTTERY(5, "河南出票");
+    HE_NAN_LOTTERY(5, "河南出票"),
+    XI_AN_LOTTERY(6, "西安出票"),
+    CAI_XIAO_MI_LOTTERY(7, "彩小秘出票"),
+    WEI_CAI_LOTTERY(8, "微彩时代出票");
 
 
 	private Integer code;
