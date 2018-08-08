@@ -1,6 +1,7 @@
 package com.dl.base.util;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 import org.apache.http.impl.execchain.MainClientExec;
+
 
 
 public class DateUtil {
@@ -29,6 +30,31 @@ public class DateUtil {
         SimpleDateFormat sdf =   new SimpleDateFormat("MM月dd日 HH:mm"); 
         return sdf.format(date); 
     }
+    
+    public static boolean isToday(String str, String formatStr){
+        SimpleDateFormat format = new SimpleDateFormat(formatStr);
+        Date date = null;
+        try {
+            date = format.parse(str);
+        } catch (ParseException e) {
+//            logger.error("解析日期错误", e);
+        }
+        Calendar c1 = Calendar.getInstance();              
+        c1.setTime(date);                                 
+        int year1 = c1.get(Calendar.YEAR);
+        int month1 = c1.get(Calendar.MONTH)+1;
+        int day1 = c1.get(Calendar.DAY_OF_MONTH);     
+        Calendar c2 = Calendar.getInstance(); 
+        c2.setTime(new Date());
+        int year2 = c2.get(Calendar.YEAR);
+        int month2 = c2.get(Calendar.MONTH)+1;
+        int day2 = c2.get(Calendar.DAY_OF_MONTH);   
+        if(year1 == year2 && month1 == month2 && day1 == day2){
+            return true;
+        }
+        return false;   
+    }
+    
     
     /**
      * 时间是否在一周之内
