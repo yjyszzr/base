@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class UserDeviceInfo implements Serializable{
 
-	 @ApiModelProperty("平台：1-android,2-ios,3-h5(小写)")
+	 @ApiModelProperty("平台：1-android,2-iphone,3-h5(小写)")
 	 @NotNull(message = "平台不能为空")
 	 private String plat;
 	 
