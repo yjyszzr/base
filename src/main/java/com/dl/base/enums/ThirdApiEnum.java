@@ -9,7 +9,8 @@ public enum ThirdApiEnum {
     HE_NAN_LOTTERY(5, "河南出票"),
     XI_AN_LOTTERY(6, "西安出票"),
     CAI_XIAO_MI_LOTTERY(7, "彩小秘出票"),
-    WEI_CAI_LOTTERY(8, "微彩时代出票");
+    WEI_CAI_LOTTERY(8, "微彩时代出票"),
+    SENDE_LOTTERY(9, "森德出票");
 
 
 	private Integer code;
