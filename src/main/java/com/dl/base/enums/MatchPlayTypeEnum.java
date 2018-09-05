@@ -1,5 +1,6 @@
 package com.dl.base.enums;
 
+
 public enum MatchPlayTypeEnum {
 	PLAY_TYPE_HHAD(1,"hhad"), //让球胜平负
 	PLAY_TYPE_HAD(2,"had"), // 胜平负
@@ -12,16 +13,26 @@ public enum MatchPlayTypeEnum {
 	private Integer code;
     private String msg;
 
+	public static String getMsgByCode(Integer code) {
+		for(MatchPlayTypeEnum ml: MatchPlayTypeEnum.values()) {
+			if(ml.getcode() == code) {
+				return ml.getMsg();
+			}
+		}
+		return "";
+	}
+    
+    
     private MatchPlayTypeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public int getcode() {
+    public Integer getcode() {
         return code;
     }
 
-    public void setcode(int code) {
+    public void setcode(Integer code) {
         this.code = code;
     }
 
