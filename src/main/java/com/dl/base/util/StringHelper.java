@@ -15,4 +15,20 @@ public class StringHelper {
     	return oldStr;
     }
     
+    /**
+     * 替换html中的内容为文字
+     */
+    public static String stripHtml(String content) { 
+    	// <p>段落替换为换行 
+    	content = content.replaceAll("<p .*?>", "\n"); 
+    	// <br><br/>替换为换行 
+    	content = content.replaceAll("<br\\s*/?>", "\n"); 
+    	// 去掉其它的<>之间的东西 
+    	content = content.replaceAll("\\<.*?>", ""); 
+    	// 还原HTML 
+    	// content = HTMLDecoder.decode(content); 
+    	return content; 
+   }
+    
+    
 }
