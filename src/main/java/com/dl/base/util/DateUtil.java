@@ -19,6 +19,7 @@ public class DateUtil {
     public static final DateTimeFormatter date_sdf_second_zero = DateTimeFormatter.ofPattern("yyyy-MM-dd 0:0:0");
     public static final DateTimeFormatter yyyyMMdd = DateTimeFormatter.ofPattern("yyyyMMdd");
     public static final DateTimeFormatter yyyyMM = DateTimeFormatter.ofPattern("yyyy-MM");
+    public static final DateTimeFormatter MMdd = DateTimeFormatter.ofPattern("MM-dd");
     public static final DateTimeFormatter date_sdf_ch = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
     public static final DateTimeFormatter time_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     public static final DateTimeFormatter ymd_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -189,6 +190,18 @@ public class DateUtil {
     	ParsePosition pos = new ParsePosition(0);
     	Date strtodate = formatter.parse(strDate, pos);
     	return strtodate;
+   }
+    
+   public static String toStringDateByFormat(String strDate,String dateFormat) {
+    	SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+    	Date date = null;
+		try {
+			date = formatter.parse(strDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+    	String transformDate = formatter.format(date);
+    	return transformDate;
    }
     
     public static Integer getCurrentTimeLong(Long lepochSecond) {
