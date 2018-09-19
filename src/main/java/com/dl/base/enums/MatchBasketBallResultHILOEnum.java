@@ -1,25 +1,20 @@
 package com.dl.base.enums;
 
-public enum BasketBallMatchResultHILOEnum {
+public enum MatchBasketBallResultHILOEnum {
 	
-	HILO_LEV1("1", "1-5分"), 
-	HILO_LEV2("2", "6-10分"),
-	HILO_LEV3("3", "11-15分"),
-	HILO_LEV4("4", "16-20分"),
-	HILO_LEV5("5", "21-25分"),
-	HILO_LEV6("6", "26分+");
-
+	H_SCORE("1", "大分"),
+	L_SCORE("2", "小分");
 	
 	private String code;
 	private String msg;
 	
-	private BasketBallMatchResultHILOEnum(String code, String msg) {
+	private MatchBasketBallResultHILOEnum(String code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}
 
 	public static String getName(String index) {
-		for(BasketBallMatchResultHILOEnum lwd: BasketBallMatchResultHILOEnum.values()) {
+		for(MatchBasketBallResultHILOEnum lwd: MatchBasketBallResultHILOEnum.values()) {
 			if(lwd.getCode().equals(index)) {
 				return lwd.getMsg();
 			}
@@ -28,7 +23,7 @@ public enum BasketBallMatchResultHILOEnum {
 	}
 	
 	public static String getCode(String value) {
-		for(BasketBallMatchResultHILOEnum lwd: BasketBallMatchResultHILOEnum.values()) {
+		for(MatchBasketBallResultHILOEnum lwd: MatchBasketBallResultHILOEnum.values()) {
 			if(lwd.getMsg().equals(value)) {
 				return lwd.getCode();
 			}
