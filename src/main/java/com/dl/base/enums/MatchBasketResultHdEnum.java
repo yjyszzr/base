@@ -1,20 +1,20 @@
 package com.dl.base.enums;
 
-public enum MatchBasketBallResultHDCEnum {
+public enum MatchBasketResultHdEnum {
 	
-	HHD_H(1, "主胜"),
-	HHD_A(2, "主负");
+	HD_H(1, "主胜"),
+	HD_D(2, "主负");
 	
 	private Integer code;
 	private String msg;
 	
-	private MatchBasketBallResultHDCEnum(int code, String msg) {
+	private MatchBasketResultHdEnum(int code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}
 
 	public static String getName(int index) {
-		for(MatchBasketBallResultHDCEnum lwd: MatchBasketBallResultHDCEnum.values()) {
+		for(MatchBasketResultHdEnum lwd: MatchBasketResultHdEnum.values()) {
 			if(lwd.getCode() == index) {
 				return lwd.getMsg();
 			}
@@ -23,7 +23,7 @@ public enum MatchBasketBallResultHDCEnum {
 	}
 	
 	public static Integer getCode(String value) {
-		for(MatchBasketBallResultHDCEnum lwd: MatchBasketBallResultHDCEnum.values()) {
+		for(MatchBasketResultHdEnum lwd: MatchBasketResultHdEnum.values()) {
 			if(lwd.getMsg().equals(value)) {
 				return lwd.getCode();
 			}
