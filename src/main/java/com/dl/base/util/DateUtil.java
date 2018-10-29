@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import org.apache.http.impl.execchain.MainClientExec;
-
-
 
 public class DateUtil {
     public static final DateTimeFormatter date_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -25,6 +22,7 @@ public class DateUtil {
     public static final DateTimeFormatter ymd_sdf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     public static final DateTimeFormatter yyyymmddhhmmss = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
     public static final DateTimeFormatter short_time_sdf = DateTimeFormatter.ofPattern("HH:mm:ss");
+    public static final DateTimeFormatter hhmmssSdf = DateTimeFormatter.ofPattern("HHmmss");
     public static final DateTimeFormatter hh_mm_sdf = DateTimeFormatter.ofPattern("HH:mm");
     public static final DateTimeFormatter datetimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     public static final String[] weekDays = { "周一", "周二", "周三", "周四", "周五", "周六","周日"};
