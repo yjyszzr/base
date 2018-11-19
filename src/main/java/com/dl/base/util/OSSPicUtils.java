@@ -2,6 +2,10 @@ package com.dl.base.util;
 
 import org.apache.commons.lang3.StringUtils;
 
+/***
+ * OSS图片链接处理
+ * @author Administrator
+ */
 public class OSSPicUtils {
 	
 	/**
