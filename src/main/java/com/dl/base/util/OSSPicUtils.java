@@ -21,6 +21,10 @@ public class OSSPicUtils {
 			builder.append(picUrl);
 			//将图按比例缩略到原来的 1/3
 			builder.append("?x-oss-process=image/resize,p_30");
+			if(width > 0 && height > 0) {
+				builder.append(",w_" + width);
+				builder.append(",h_" + height);
+			}
 		}
 		return builder.toString();
 	}
