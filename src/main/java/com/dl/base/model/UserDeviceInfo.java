@@ -59,4 +59,15 @@ public class UserDeviceInfo implements Serializable{
 	 
 	 @ApiModelProperty(value = "广告唯一标识")
 	 private String IDFA;
+
+	 @ApiModelProperty(value = "纬度")
+	 private String lat;
+
+	 @ApiModelProperty(value = "经度")
+	 private String lon;
+
+	 @ApiModelProperty(value = "城市")
+	 private String city;
+
+
 }
