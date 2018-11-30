@@ -61,10 +61,13 @@ public class UserDeviceInfo implements Serializable{
 	 private String IDFA;
 
 	 @ApiModelProperty(value = "纬度")
-	 private String lat;
+	 private Double lat;
 
 	 @ApiModelProperty(value = "经度")
-	 private String lon;
+	 private Double lon;
+
+	 @ApiModelProperty(value = "省")
+	 private String province;
 
 	 @ApiModelProperty(value = "城市")
 	 private String city;
