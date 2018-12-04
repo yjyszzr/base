@@ -26,7 +26,7 @@ public class UserDeviceInfo implements Serializable{
 	 
 	 @ApiModelProperty(value = "设备网卡mac地址")
 	 private String mac;
-	 
+
 	 @ApiModelProperty(value = "宽")
 	 private String w;
 	 
@@ -57,8 +57,11 @@ public class UserDeviceInfo implements Serializable{
 	 @ApiModelProperty(value = "用户ip")
 	 private String userIp;
 	 
-	 @ApiModelProperty(value = "广告唯一标识")
+	 @ApiModelProperty(value = "广告唯一标识：苹果设备唯一值")
 	 private String IDFA;
+
+	@ApiModelProperty(value = "安卓的唯一id：安卓设备唯一值")
+	private String androidid;
 
 	 @ApiModelProperty(value = "纬度")
 	 private Double lat;
@@ -71,6 +74,5 @@ public class UserDeviceInfo implements Serializable{
 
 	 @ApiModelProperty(value = "城市")
 	 private String city;
-
 
 }
