@@ -20,6 +20,7 @@ import static com.dl.base.constant.CommonConstants.HTTP_HEADER_ADDRESS;
 import static com.dl.base.constant.CommonConstants.HTTP_HEADER_DEVICE;
 
 import java.net.InetAddress;
+import java.net.URLDecoder;
 import java.net.UnknownHostException;
 
 /**
@@ -60,9 +61,11 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
             }
         }
         String deviceStr = request.getHeader(HTTP_HEADER_DEVICE);
+
         if (StringUtils.isNotEmpty(deviceStr)) {
         	try {
-        		UserDeviceInfo deviceInfo = JSON.parseObject(deviceStr, UserDeviceInfo.class);
+				String deviceStrUTF8 = URLDecoder.decode(deviceStr,"UTF-8");
+        		UserDeviceInfo deviceInfo = JSON.parseObject(deviceStrUTF8, UserDeviceInfo.class);
         		if(deviceInfo != null) {
         			String ipAddr = this.getIpAddr(request);
         			deviceInfo.setUserIp(ipAddr);
