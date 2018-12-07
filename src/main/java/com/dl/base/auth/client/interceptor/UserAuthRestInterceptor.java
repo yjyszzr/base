@@ -64,7 +64,6 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
 
         if (StringUtils.isNotEmpty(deviceStr)) {
         	try {
-				String deviceStrUTF8 = URLDecoder.decode(deviceStr,"UTF-8");
         		UserDeviceInfo deviceInfo = JSON.parseObject(deviceStrUTF8, UserDeviceInfo.class);
         		if(deviceInfo != null) {
         			String ipAddr = this.getIpAddr(request);
