@@ -201,6 +201,13 @@ public class DateUtil {
     	String transformDate = formatter.format(date);
     	return transformDate;
    }
+
+    public static String toStringDateByFormat(Date strDate,String dateFormat) {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateFormat);
+        String dateString = formatter.format(strDate);
+        return dateString;
+    }
+
     
     public static Integer getCurrentTimeLong(Long lepochSecond) {
     	LocalDateTime time = LocalDateTime.ofEpochSecond(lepochSecond, 0, ZoneOffset.of("+08:00"));
