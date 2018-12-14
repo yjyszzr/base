@@ -45,8 +45,10 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
         	if(request != null && userAuthConfig != null) {
         		token = request.getHeader(userAuthConfig.getTokenHeader());	
         	}
+        	log.info("[preHandle]" + " token:" + token);
             if (StringUtils.isNotEmpty(token)) {
                 IJWTInfo infoFromToken = userAuthUtil.getInfoFromToken(token);
+                log.info("[preHandle]" + " infoFromToken:" + infoFromToken + " userId:" + infoFromToken.getUserId());
                 BaseContextHandler.setToken(token);
                 BaseContextHandler.setUserID(infoFromToken.getUserId());
             }
