@@ -42,15 +42,15 @@ public class UserAuthRestInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {
         	String token = null;
-    		log.info("[preHandle]" + " request:" + request + " userAuthConfig:" + userAuthConfig);
+//    		log.info("[preHandle]" + " request:" + request + " userAuthConfig:" + userAuthConfig);
         	if(request != null && userAuthConfig != null) {
-        		log.info("[preHandle]" + " tokenHeader:" + userAuthConfig.getTokenHeader());
+//        		log.info("[preHandle]" + " tokenHeader:" + userAuthConfig.getTokenHeader());
         		token = request.getHeader(userAuthConfig.getTokenHeader());	
         	}
-        	log.info("[preHandle]" + " token:" + token);
+//        	log.info("[preHandle]" + " token:" + token);
             if (StringUtils.isNotEmpty(token)) {
                 IJWTInfo infoFromToken = userAuthUtil.getInfoFromToken(token);
-                log.info("[preHandle]" + " infoFromToken:" + infoFromToken + " userId:" + infoFromToken.getUserId());
+//                log.info("[preHandle]" + " infoFromToken:" + infoFromToken + " userId:" + infoFromToken.getUserId());
                 BaseContextHandler.setToken(token);
                 BaseContextHandler.setUserID(infoFromToken.getUserId());
             }
