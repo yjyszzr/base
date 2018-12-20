@@ -34,6 +34,14 @@ public class SessionUtil {
     }
 
     /**
+     * 获取当前用户的Token信息
+     * @return
+     */
+    public static String getToken() {
+    	return BaseContextHandler.getToken();
+    }
+    
+    /**
      * 获取当前用户设备信息
      *
      * @return 设备信息
