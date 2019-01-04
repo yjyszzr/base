@@ -9,6 +9,7 @@ public enum AccountEnum {
     WITHDRAW(4, "提现","提"),
     BONUS(5, "红包","红"),
     MONEY_ROLLBACK(6, "资金已退回","退"),
+	BACK_MONEY(8, "退款","退"),
 	BEYOND_ENTER_MONEY(9, "错误","误");
 
 	private Integer code;
