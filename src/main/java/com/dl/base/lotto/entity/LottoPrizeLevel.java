@@ -15,4 +15,13 @@ public class LottoPrizeLevel {
 	public int cLevelForthCount;
 	public int cLevelFifthCount;
 	public int cLevelSixthCount;
+	
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String str = "level:" + level + " superCnt:" + cLevelSuperCount + " midCnt:" + cLevelMidCount + " thirdCnt:" + cLevelThirdCount + ""
+				+ " forthCnt:" + cLevelForthCount + " fifthCnt:" + cLevelFifthCount + " sixCnt:" + cLevelSixthCount;
+		return str;
+	}
 }

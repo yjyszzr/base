@@ -21,8 +21,9 @@ public class LottoMoneyUtil {
 	 * @return
 	 */
 	public static final BigDecimal calculate(LottoResultEntity result,BigDecimal prizeA,BigDecimal prizeB,BigDecimal prizeC,boolean isAppend) {
-		BigDecimal r = null;
+		BigDecimal r = BigDecimal.ZERO;
 		if(!result.isCompund) {	//单式计算奖金
+			System.out.println("单式计算奖金");
 			int level = result.lottoLevel.level;
 			if(level == 1) {
 				r = prizeA;
@@ -31,11 +32,11 @@ public class LottoMoneyUtil {
 			}else if(level == 3) {
 				r = prizeC;
 			}else if(level == 4) {
-				r = BigDecimal.valueOf(200);
+				r = BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_FORTH);
 			}else if(level == 5) {
-				r = BigDecimal.valueOf(10);
+				r = BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_FIFTH);
 			}else if(level == 6) {
-				r = BigDecimal.valueOf(5);
+				r = BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_SIXTH);
 			}
 			if(isAppend) {
 				if(level == 1 || level == 2 || level == 3) {
@@ -45,7 +46,47 @@ public class LottoMoneyUtil {
 				}
 			}
 		}else {	//复试计算奖金算法
-			
+			System.out.println("复式计算奖金");
+			int levelACnt = result.lottoLevel.cLevelSuperCount;
+			int levelBCnt = result.lottoLevel.cLevelMidCount;
+			int levelCCnt = result.lottoLevel.cLevelThirdCount;
+			int levelDCnt = result.lottoLevel.cLevelForthCount;
+			int levelECnt = result.lottoLevel.cLevelFifthCount;
+			int levelFCnt = result.lottoLevel.cLevelSixthCount;
+			float factor = 1;
+			if(levelACnt > 0) {
+				if(isAppend) {
+					factor = 1.6f;
+				}
+				r = r.add(prizeA.multiply(BigDecimal.valueOf(levelACnt*factor)));
+			}
+			if(levelBCnt > 0) {
+				if(isAppend) {
+					factor = 1.6f;
+				}
+				r = r.add(prizeB.multiply(BigDecimal.valueOf(levelBCnt*factor)));
+			}
+			if(levelCCnt > 0) {
+				if(isAppend) {
+					factor = 1.6f;
+				}
+				r = r.add(prizeC.multiply(BigDecimal.valueOf(levelCCnt*factor)));
+			}
+			if(levelDCnt > 0) {
+				if(isAppend) {
+					factor = 1.5f;
+				}
+				r = r.add(BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_FORTH * levelDCnt * factor));
+			}
+			if(levelECnt > 0) {
+				if(isAppend) {
+					factor = 1.5f;
+				}
+				r = r.add(BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_FIFTH * levelECnt * factor));
+			}
+			if(levelFCnt > 0) {
+				r = r.add(BigDecimal.valueOf(LottoCommon.LOTTO_PRIZE_SIXTH * levelFCnt));
+			}
 		}
 		return r;
 	}

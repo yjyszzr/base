@@ -14,4 +14,12 @@ public class LottoResultEntity {
 	public String reason;
 	public LottoPrizeLevel lottoLevel;	//单式几等奖
 	public boolean isCompund;	//是否是复试
+	
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		String str = "status:" + status + " reason:" + reason + " isCompund:" + isCompund + " lottoLevel:" + lottoLevel;
+		return str;
+	}
 }

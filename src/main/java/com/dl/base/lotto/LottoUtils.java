@@ -18,17 +18,46 @@ import com.dl.base.lotto.entity.LottoResultEntity;
  */
 public class LottoUtils {
 
+	
 	public static void main(String[] args) {
-		String src = "02,16,19,23,25|01,02";
+		String src = "02,10,13,16,19,32|01,03,09";
 		String target = "02,10,13,16,19|01,02";
 		
 		LottoResultEntity resultEntity = calPrizeLevel(src, target);
-		System.out.println("status:" + resultEntity.status + " reason:" + resultEntity.reason);
+		System.out.println("resultEntity:" + resultEntity);
 		if(resultEntity.lottoLevel != null) {
 			System.out.println("level:" + resultEntity.lottoLevel.level);
 		}
-		BigDecimal r = LottoMoneyUtil.calculate(resultEntity, BigDecimal.valueOf(1000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
+		BigDecimal r = LottoMoneyUtil.calculate(resultEntity, BigDecimal.valueOf(16859000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
 		System.out.println("r:" + r);
+	}
+	
+	private static List<Integer> convertToInt(List<LottoItemEntity> sList){
+		List<Integer> rList = new ArrayList<Integer>();
+		if(sList != null && sList.size() > 0) {
+			for(LottoItemEntity itemEntity : sList) {
+				Integer data = itemEntity.num;
+				rList.add(data);
+			}
+		}
+		return rList;
+	}
+
+	private static List<List<LottoItemEntity>> reConvertToList(List<List<Integer>> sList){
+		 List<List<LottoItemEntity>> resultList = new ArrayList<List<LottoItemEntity>>();
+		for(List<Integer> tList : sList) {
+			if(tList != null && tList.size() > 0) {
+				List<LottoItemEntity> rList = new ArrayList<LottoItemEntity>();
+				for(Integer item : tList) {
+					LottoItemEntity itemEntity = new LottoItemEntity();
+					itemEntity.num = item;
+					rList.add(itemEntity);
+				}
+				resultList.add(rList);
+			}
+		}
+		
+		return resultList;
 	}
 	
 	/**
@@ -52,27 +81,86 @@ public class LottoUtils {
 		LottoInfoEntity srcEntity = parseInfo(src);
 		LottoInfoEntity targetEntity = parseInfo(target);
 		//计算单式还是复试
-		if(srcEntity.redList.size() > 5 || srcEntity.blueList.size() > 2) {
-			lottoResultEntity.isCompund = true;
+		boolean isCompund = false;
+		if(srcEntity.redList.size() > LottoCommon.RED_BALL_SIZE || srcEntity.blueList.size() > LottoCommon.BLUE_BALL_SIZE) {
+			isCompund = true;
 		}
-		int redHitCnt = cal(srcEntity.redList,targetEntity.redList);
-		srcEntity.redHitCnt = redHitCnt;
-		int blueHitCnt = cal(srcEntity.blueList,targetEntity.blueList);
-		srcEntity.blueHitCnt = blueHitCnt;
-		showInfo(srcEntity);
-		//计算几等奖
-		int level = calPrizeLevel(srcEntity);
-		if(level <= 0) {
-			lottoResultEntity.status = LottoResultEntity.STATUS_NOT_HIT;
-		}else {
-			lottoResultEntity.status = LottoResultEntity.STATUS_HIT;
-			LottoPrizeLevel prizeLevel = new LottoPrizeLevel();
-			prizeLevel.level = level;
-			lottoResultEntity.lottoLevel = prizeLevel;
+		lottoResultEntity.isCompund = isCompund;
+		if(isCompund) {
+			System.out.println("复式算法");
+			//红球组合
+			List<LottoItemEntity> redList = srcEntity.redList;
+			List<Integer> redIntList = convertToInt(redList);
+			LottoGroup lottoGrop = new LottoGroup(redIntList,LottoCommon.RED_BALL_SIZE);
+			List<List<Integer>> resultRedIntList = lottoGrop.cal();
+			List<List<LottoItemEntity>> resultRedList = reConvertToList(resultRedIntList);
+			System.out.println("src:" + src + " 红球组合种类:" + resultRedList.size());
+			
+			//篮球组合
+			List<LottoItemEntity> blueList = srcEntity.blueList;
+			List<Integer> blueIntList = convertToInt(blueList);
+			lottoGrop = new LottoGroup(blueIntList,LottoCommon.BLUE_BALL_SIZE);
+			List<List<Integer>> resultBlueIntList = lottoGrop.cal();
+			List<List<LottoItemEntity>> resultBlueList = reConvertToList(resultBlueIntList);
+			System.out.println("src:" + src + " 蓝球组合种类:" + resultBlueList.size());
+			LottoPrizeLevel lottoPrizeLevel = new LottoPrizeLevel();
+			int count = 0;
+			for(List<LottoItemEntity>  fRedList : resultRedList) {
+				for(List<LottoItemEntity> fBlueList : resultBlueList) {
+					LottoInfoEntity fInfoEntity = new LottoInfoEntity();
+					fInfoEntity.redList = fRedList;
+					fInfoEntity.blueList = fBlueList;
+					int redHitCnt = cal(fInfoEntity.redList,targetEntity.redList);
+					int blueHitCnt = cal(fInfoEntity.blueList,targetEntity.blueList);
+					fInfoEntity.redHitCnt = redHitCnt;
+					fInfoEntity.blueHitCnt = blueHitCnt;
+					int level = calPrizeLevel(fInfoEntity);
+					count++;
+					switch(level) {
+						case 1:
+							lottoPrizeLevel.cLevelSuperCount++;
+							break;
+						case 2:
+							lottoPrizeLevel.cLevelMidCount++;
+							break;
+						case 3:
+							lottoPrizeLevel.cLevelThirdCount++;
+							break;
+						case 4:
+							lottoPrizeLevel.cLevelForthCount++;
+							break;
+						case 5:
+							lottoPrizeLevel.cLevelFifthCount++;
+							break;
+						case 6:
+							lottoPrizeLevel.cLevelSixthCount++;
+							break;
+					}
+				}//for
+			}//for
+			System.out.println("合计个数:" + count);
+			lottoResultEntity.lottoLevel = lottoPrizeLevel;
+		}else{
+			System.out.println("单式算法");
+			int redHitCnt = cal(srcEntity.redList,targetEntity.redList);
+			srcEntity.redHitCnt = redHitCnt;
+			int blueHitCnt = cal(srcEntity.blueList,targetEntity.blueList);
+			srcEntity.blueHitCnt = blueHitCnt;
+			showInfo(srcEntity);
+			//计算几等奖
+			int level = calPrizeLevel(srcEntity);
+			if(level <= 0) {
+				lottoResultEntity.status = LottoResultEntity.STATUS_NOT_HIT;
+			}else {
+				lottoResultEntity.status = LottoResultEntity.STATUS_HIT;
+				LottoPrizeLevel prizeLevel = new LottoPrizeLevel();
+				prizeLevel.level = level;
+				lottoResultEntity.lottoLevel = prizeLevel;
+			}
 		}
 		return lottoResultEntity;
 	}
-
+	
 	private static final int calPrizeLevel(LottoInfoEntity entity) {
 		int level = 0;
 		int redHitCnt = entity.redHitCnt;
