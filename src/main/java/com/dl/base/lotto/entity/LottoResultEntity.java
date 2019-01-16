@@ -12,5 +12,6 @@ public class LottoResultEntity {
 	
 	public int status;	//状态
 	public String reason;
-	public LottoPrizeLevel lottoLevel;	//几等奖
+	public LottoPrizeLevel lottoLevel;	//单式几等奖
+	public boolean isCompund;	//是否是复试
 }

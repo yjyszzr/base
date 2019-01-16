@@ -1,5 +1,6 @@
 package com.dl.base.lotto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +21,14 @@ public class LottoUtils {
 	public static void main(String[] args) {
 		String src = "02,16,19,23,25|01,02";
 		String target = "02,10,13,16,19|01,02";
+		
 		LottoResultEntity resultEntity = calPrizeLevel(src, target);
 		System.out.println("status:" + resultEntity.status + " reason:" + resultEntity.reason);
 		if(resultEntity.lottoLevel != null) {
 			System.out.println("level:" + resultEntity.lottoLevel.level);
 		}
+		BigDecimal r = LottoMoneyUtil.calculate(resultEntity, BigDecimal.valueOf(1000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
+		System.out.println("r:" + r);
 	}
 	
 	/**
@@ -47,6 +51,10 @@ public class LottoUtils {
 		}
 		LottoInfoEntity srcEntity = parseInfo(src);
 		LottoInfoEntity targetEntity = parseInfo(target);
+		//计算单式还是复试
+		if(srcEntity.redList.size() > 5 || srcEntity.blueList.size() > 2) {
+			lottoResultEntity.isCompund = true;
+		}
 		int redHitCnt = cal(srcEntity.redList,targetEntity.redList);
 		srcEntity.redHitCnt = redHitCnt;
 		int blueHitCnt = cal(srcEntity.blueList,targetEntity.blueList);
