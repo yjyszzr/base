@@ -27,6 +27,7 @@ public class LottoUtils {
 		System.out.println("resultEntity:" + resultEntity);
 		if(resultEntity.lottoLevel != null) {
 			System.out.println("level:" + resultEntity.lottoLevel.level);
+			System.out.println("中奖级别:" + resultEntity.lottoLevel.toCompoundPrizeLevle());
 		}
 		BigDecimal r = LottoMoneyUtil.calculate(resultEntity, BigDecimal.valueOf(16859000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
 		System.out.println("r:" + r);

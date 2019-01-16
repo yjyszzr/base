@@ -24,4 +24,37 @@ public class LottoPrizeLevel {
 				+ " forthCnt:" + cLevelForthCount + " fifthCnt:" + cLevelFifthCount + " sixCnt:" + cLevelSixthCount;
 		return str;
 	}
+	
+	/**
+	 * 输出奖级别
+	 * @return
+	 */
+	public String toCompoundPrizeLevle() {
+		StringBuilder builder = new StringBuilder();
+		if(cLevelSuperCount > 0) {
+			builder.append(cLevelSuperCount+"A"+"+");
+		}
+		if(cLevelMidCount > 0) {
+			builder.append(cLevelMidCount+"B" + "+");
+		}
+		if(cLevelThirdCount > 0) {
+			builder.append(cLevelThirdCount + "C" + "+");
+		}
+		if(cLevelForthCount > 0) {
+			builder.append(cLevelForthCount + "D" + "+");
+		}
+		if(cLevelFifthCount > 0) {
+			builder.append(cLevelFifthCount + "E" + "+");
+		}
+		if(cLevelSixthCount > 0) {
+			builder.append(cLevelSixthCount + "F" + "+");
+		}
+		if(builder.length() > 0) {
+			char c = builder.charAt(builder.length() - 1);
+			if(c == '+') {
+				builder.deleteCharAt(builder.length() - 1);
+			}
+		}
+		return builder.toString();
+	}
 }
