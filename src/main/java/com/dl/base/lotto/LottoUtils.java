@@ -141,6 +141,12 @@ public class LottoUtils {
 			}//for
 			System.out.println("合计个数:" + count);
 			lottoResultEntity.lottoLevel = lottoPrizeLevel;
+			boolean isHit = lottoPrizeLevel.isCompoundHit();
+			if(isHit) {
+				lottoResultEntity.status = LottoResultEntity.STATUS_HIT;
+			}else {
+				lottoResultEntity.status = LottoResultEntity.STATUS_NOT_HIT;
+			}
 		}else{
 			System.out.println("单式算法");
 			int redHitCnt = cal(srcEntity.redList,targetEntity.redList);

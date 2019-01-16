@@ -25,6 +25,14 @@ public class LottoPrizeLevel {
 		return str;
 	}
 	
+	public boolean isCompoundHit() {
+		boolean isHit = false;
+		if(cLevelSuperCount > 0 || cLevelMidCount > 0 || cLevelThirdCount > 0 || cLevelForthCount > 0 || cLevelFifthCount > 0  || cLevelSixthCount > 0) {
+			isHit = true;
+		}
+		return isHit;
+	}
+	
 	/**
 	 * 输出奖级别
 	 * @return
