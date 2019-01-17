@@ -15,6 +15,29 @@ public class LottoResultEntity {
 	public LottoPrizeLevel lottoLevel;	//单式几等奖
 	public boolean isCompund;	//是否是复试
 	
+	public int getMaxLevel() {
+		int maxLevel = 0;
+		if(lottoLevel != null) {
+			if(!isCompund) {
+				maxLevel = lottoLevel.level;
+			}else {
+				if(lottoLevel.cLevelSuperCount > 0) {
+					maxLevel = 1;
+				}else if(lottoLevel.cLevelMidCount > 0) {
+					maxLevel = 2;
+				}else if(lottoLevel.cLevelThirdCount > 0) {
+					maxLevel = 3;
+				}else if(lottoLevel.cLevelForthCount > 0) {
+					maxLevel = 4;
+				}else if(lottoLevel.cLevelFifthCount > 0) {
+					maxLevel = 5;
+				}else if(lottoLevel.cLevelSixthCount > 0) {
+					maxLevel = 6;
+				}
+			}
+		}
+		return maxLevel;
+	}
 	
 	@Override
 	public String toString() {
