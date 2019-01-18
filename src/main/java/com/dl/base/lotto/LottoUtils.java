@@ -1,5 +1,6 @@
 package com.dl.base.lotto;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.util.StringUtils;
@@ -19,8 +20,8 @@ public class LottoUtils {
 
 	
 //	public static void main(String[] args) {
-//		String src = "02,10,13,16,19,32|01,03,09";
-//		String target = "02,10,13,16,19|01,02";
+//		String src =    "02,16,09,32,11|01,09";
+//		String target = "01,10,13,16,19|01,02";
 //		
 //		LottoResultEntity resultEntity = calPrizeLevel(src, target);
 //		System.out.println("resultEntity:" + resultEntity);
@@ -172,7 +173,7 @@ public class LottoUtils {
 	}
 	
 	private static final int calPrizeLevel(LottoInfoEntity entity) {
-		int level = 0;
+		int level = LottoCommon.LOTTO_LEVEL_NOT_HIT;
 		int redHitCnt = entity.redHitCnt;
 		int blueHitCnt = entity.blueHitCnt;
 		if(redHitCnt == 5 && blueHitCnt == 2) {	//红色球命中5个，蓝色球命中2个
@@ -212,7 +213,7 @@ public class LottoUtils {
 	 */
 	@SuppressWarnings("unused")
 	private static final int calPrizeLevelV2(LottoInfoEntity entity) {
-		int level = 0;
+		int level = LottoCommon.LOTTO_LEVEL_NOT_HIT;
 		int redHitCnt = entity.redHitCnt;
 		int blueHitCnt = entity.blueHitCnt;
 		if(redHitCnt == 5 && blueHitCnt == 2) {	//红色球中5个，蓝色球中2个

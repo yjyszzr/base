@@ -13,4 +13,6 @@ public class LottoCommon {
 	//乐透六等奖5元
 	public static final int LOTTO_PRIZE_SIXTH = 5;
 	
+	
+	public static final int LOTTO_LEVEL_NOT_HIT = 99;
 }
