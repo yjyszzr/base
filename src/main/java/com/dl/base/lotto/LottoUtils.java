@@ -218,7 +218,7 @@ public class LottoUtils {
 		int blueHitCnt = entity.blueHitCnt;
 		if(redHitCnt == 5 && blueHitCnt == 2) {	//红色球中5个，蓝色球中2个
 			level = 1;
-		}else if(redHitCnt == 5 && blueHitCnt == 1) {	//红色中5个，蓝色中2个
+		}else if(redHitCnt == 5 && blueHitCnt == 1) {	//红色中5个，蓝色中1个
 			level = 2;
 		}else if(redHitCnt == 5 && blueHitCnt == 0) {	//红色中5个，蓝色中0个
 			level = 3;

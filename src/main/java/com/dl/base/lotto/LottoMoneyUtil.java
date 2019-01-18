@@ -20,7 +20,7 @@ public class LottoMoneyUtil {
 	 * @param isAppend
 	 * @return
 	 */
-	public static final BigDecimal calculate(LottoResultEntity result,BigDecimal prizeA,BigDecimal prizeB,BigDecimal prizeC,boolean isAppend) {
+	public static final BigDecimal calculate(LottoResultEntity result,BigDecimal prizeA,BigDecimal prizeB,BigDecimal prizeC,BigDecimal prizeAAppend,BigDecimal prizeBAppend,BigDecimal prizeCAppend,boolean isAppend) {
 		BigDecimal r = BigDecimal.ZERO;
 		if(!result.isCompund) {	//单式计算奖金
 			System.out.println("单式计算奖金");
@@ -40,7 +40,14 @@ public class LottoMoneyUtil {
 			}
 			if(isAppend) {
 				if(level == 1 || level == 2 || level == 3) {
-					r = r.multiply(BigDecimal.valueOf(1.6));
+//					r = r.multiply(BigDecimal.valueOf(1.6));
+					if(level == 1) {
+						r = r.add(prizeAAppend);
+					}else if(level == 2) {
+						r = r.add(prizeBAppend);
+					}else if(level == 3) {
+						r = r.add(prizeCAppend);
+					}
 				}else if(level == 4 || level == 5) {
 					r = r.multiply(BigDecimal.valueOf(1.5));
 				}
