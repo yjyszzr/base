@@ -1,5 +1,7 @@
 package com.dl.base.lotto.entity;
 
+import com.dl.base.lotto.LottoCommon;
+
 /**
  * 大乐透返回结果
  * @author
@@ -16,7 +18,7 @@ public class LottoResultEntity {
 	public boolean isCompund;	//是否是复试
 	
 	public int getMaxLevel() {
-		int maxLevel = 0;
+		int maxLevel = LottoCommon.LOTTO_LEVEL_NOT_HIT;
 		if(lottoLevel != null) {
 			if(!isCompund) {
 				maxLevel = lottoLevel.level;
