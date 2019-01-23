@@ -47,7 +47,7 @@ public class LottoGroup {
         if(n==0){
             List<Integer> list = getList(str);
             rList.add(list);
-            System.out.println(str);
+//            System.out.println(str);
             return;
         }
         if(i==num.length){
