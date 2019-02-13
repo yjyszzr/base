@@ -20,7 +20,7 @@ public class LottoUtils {
 
 	
 //	public static void main(String[] args) {
-//		String src =    "02,16,09,32,11|01,09";
+//		String src =    "02,11,18,17,11|03,02";
 //		String target = "01,10,13,16,19|01,02";
 //		
 //		LottoResultEntity resultEntity = calPrizeLevel(src, target);
@@ -29,7 +29,7 @@ public class LottoUtils {
 //			System.out.println("level:" + resultEntity.lottoLevel.level);
 //			System.out.println("中奖级别:" + resultEntity.lottoLevel.toCompoundPrizeLevle());
 //		}
-//		BigDecimal r = LottoMoneyUtil.calculate(resultEntity, BigDecimal.valueOf(16859000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
+//		BigDecimal r = LottoMoneyUtil.calculateV2(resultEntity, BigDecimal.valueOf(16859000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),BigDecimal.valueOf(16859000),BigDecimal.valueOf(600),BigDecimal.valueOf(200),false);
 //		System.out.println("r:" + r);
 //	}
 	
@@ -96,7 +96,6 @@ public class LottoUtils {
 			LottoGroup lottoGrop = new LottoGroup(redIntList,LottoCommon.RED_BALL_SIZE);
 			List<List<Integer>> resultRedIntList = lottoGrop.cal();
 			List<List<LottoItemEntity>> resultRedList = reConvertToList(resultRedIntList);
-			System.out.println("src:" + src + " 红球组合种类:" + resultRedList.size());
 			log.info("src:" + src + " 红球组合种类:" + resultRedList.size());
 			//篮球组合
 			List<LottoItemEntity> blueList = srcEntity.blueList;
@@ -104,7 +103,6 @@ public class LottoUtils {
 			lottoGrop = new LottoGroup(blueIntList,LottoCommon.BLUE_BALL_SIZE);
 			List<List<Integer>> resultBlueIntList = lottoGrop.cal();
 			List<List<LottoItemEntity>> resultBlueList = reConvertToList(resultBlueIntList);
-			System.out.println("src:" + src + " 蓝球组合种类:" + resultBlueList.size());
 			log.info("src:" + src + " 蓝球组合种类:" + resultBlueList.size());
 			LottoPrizeLevel lottoPrizeLevel = new LottoPrizeLevel();
 			int count = 0;
@@ -117,7 +115,7 @@ public class LottoUtils {
 					int blueHitCnt = cal(fInfoEntity.blueList,targetEntity.blueList);
 					fInfoEntity.redHitCnt = redHitCnt;
 					fInfoEntity.blueHitCnt = blueHitCnt;
-					int level = calPrizeLevel(fInfoEntity);
+					int level = calPrizeLevelV2(fInfoEntity);
 					count++;
 					switch(level) {
 						case 1:
@@ -138,10 +136,18 @@ public class LottoUtils {
 						case 6:
 							lottoPrizeLevel.cLevelSixthCount++;
 							break;
+						case 7:
+							lottoPrizeLevel.cLevelSevenCount++;
+							break;
+						case 8:
+							lottoPrizeLevel.cLevelEightCount++;
+							break;
+						case 9:
+							lottoPrizeLevel.cLevelNineCount++;
+							break;
 					}
 				}//for
 			}//for
-			System.out.println("合计个数:" + count);
 			log.info("合计个数:" + count);
 			lottoResultEntity.lottoLevel = lottoPrizeLevel;
 			boolean isHit = lottoPrizeLevel.isCompoundHit();
@@ -151,7 +157,6 @@ public class LottoUtils {
 				lottoResultEntity.status = LottoResultEntity.STATUS_NOT_HIT;
 			}
 		}else{
-			System.out.println("单式算法");
 			log.info("[单式算法]");
 			int redHitCnt = cal(srcEntity.redList,targetEntity.redList);
 			srcEntity.redHitCnt = redHitCnt;
@@ -159,7 +164,7 @@ public class LottoUtils {
 			srcEntity.blueHitCnt = blueHitCnt;
 			showInfo(srcEntity);
 			//计算几等奖
-			int level = calPrizeLevel(srcEntity);
+			int level = calPrizeLevelV2(srcEntity);
 			if(level <= 0) {
 				lottoResultEntity.status = LottoResultEntity.STATUS_NOT_HIT;
 			}else {
@@ -172,6 +177,11 @@ public class LottoUtils {
 		return lottoResultEntity;
 	}
 	
+	/**
+	 * 大乐透旧式算法
+	 * @param entity
+	 * @return
+	 */
 	private static final int calPrizeLevel(LottoInfoEntity entity) {
 		int level = LottoCommon.LOTTO_LEVEL_NOT_HIT;
 		int redHitCnt = entity.redHitCnt;
@@ -211,7 +221,6 @@ public class LottoUtils {
 	 * @param entity
 	 * @return
 	 */
-	@SuppressWarnings("unused")
 	private static final int calPrizeLevelV2(LottoInfoEntity entity) {
 		int level = LottoCommon.LOTTO_LEVEL_NOT_HIT;
 		int redHitCnt = entity.redHitCnt;
@@ -226,22 +235,22 @@ public class LottoUtils {
 			level = 4;
 		}else if(redHitCnt == 4 && blueHitCnt == 1) {	//红色命中4个，蓝色命中1
 			level = 5;
-		}else if(redHitCnt == 4 && blueHitCnt == 0) {	//红色命中4个，蓝色命中0个
-			level = 6;
 		}else if(redHitCnt == 3 && blueHitCnt == 2) {	//红色命中3个，蓝色命中2个
 			level = 6;
-		}else if(redHitCnt == 3 && blueHitCnt == 1) {	//红色命中3个，蓝色命中1
+		}else if(redHitCnt == 4 && blueHitCnt == 0) {	//4+0
 			level = 7;
-		}else if(redHitCnt == 2 && blueHitCnt == 2) {	//红色命中2个，蓝色命中2个
-			level = 7;
-		}else if(redHitCnt == 3 && blueHitCnt == 0) {	//红色命中三个，蓝色命中0个
+		}else if(redHitCnt == 3 && blueHitCnt == 1) {	//3+1
 			level = 8;
-		}else if(redHitCnt == 1 && blueHitCnt == 2) {	//红色命中1个，蓝色命中2个
+		}else if(redHitCnt == 2 && blueHitCnt == 2) {	//2+2
 			level = 8;
-		}else if(redHitCnt == 2 && blueHitCnt == 1) {	//红色命中2个，蓝色命中1个
-			level = 8;
-		}else if(redHitCnt == 0 && blueHitCnt == 2) {	//红色命中0个，蓝色命中2个
-			level = 8;
+		}else if(redHitCnt == 3 && blueHitCnt == 0) {   //3+0
+			level = 9;
+		}else if(redHitCnt == 1 && blueHitCnt == 2) {	//1+2
+			level = 9;
+		}else if(redHitCnt == 2 && blueHitCnt == 1) {	//2+1
+			level = 9;
+		}else if(redHitCnt == 0 && blueHitCnt == 2) {	//0+2
+			level = 9;
 		}
 		return level;
 	}

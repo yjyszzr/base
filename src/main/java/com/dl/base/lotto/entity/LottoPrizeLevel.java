@@ -15,19 +15,23 @@ public class LottoPrizeLevel {
 	public int cLevelForthCount;
 	public int cLevelFifthCount;
 	public int cLevelSixthCount;
-	
+	public int cLevelSevenCount;
+	public int cLevelEightCount;
+	public int cLevelNineCount;
 	
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		String str = "level:" + level + " superCnt:" + cLevelSuperCount + " midCnt:" + cLevelMidCount + " thirdCnt:" + cLevelThirdCount + ""
-				+ " forthCnt:" + cLevelForthCount + " fifthCnt:" + cLevelFifthCount + " sixCnt:" + cLevelSixthCount;
+				+ " forthCnt:" + cLevelForthCount + " fifthCnt:" + cLevelFifthCount + " sixCnt:" + cLevelSixthCount + " sevenCnt:" + cLevelSevenCount + 
+				" eightCnt:" + cLevelEightCount + " nineCnt:" + cLevelNineCount;
 		return str;
 	}
 	
 	public boolean isCompoundHit() {
 		boolean isHit = false;
-		if(cLevelSuperCount > 0 || cLevelMidCount > 0 || cLevelThirdCount > 0 || cLevelForthCount > 0 || cLevelFifthCount > 0  || cLevelSixthCount > 0) {
+		if(cLevelSuperCount > 0 || cLevelMidCount > 0 || cLevelThirdCount > 0 || cLevelForthCount > 0 || cLevelFifthCount > 0  
+		  || cLevelSixthCount > 0 || cLevelSevenCount > 0 || cLevelEightCount > 0 || cLevelNineCount > 0) {
 			isHit = true;
 		}
 		return isHit;
@@ -56,6 +60,15 @@ public class LottoPrizeLevel {
 		}
 		if(cLevelSixthCount > 0) {
 			builder.append(cLevelSixthCount + "F" + "+");
+		}
+		if(cLevelSevenCount > 0) {
+			builder.append(cLevelSevenCount+"G" + "+");
+		}
+		if(cLevelEightCount > 0) {
+			builder.append(cLevelEightCount+"H" + "+");
+		}
+		if(cLevelNineCount > 0) {
+			builder.append(cLevelNineCount + "I" + "+");
 		}
 		if(builder.length() > 0) {
 			char c = builder.charAt(builder.length() - 1);
