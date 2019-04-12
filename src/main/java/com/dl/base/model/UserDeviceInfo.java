@@ -1,11 +1,10 @@
 package com.dl.base.model;
 
-import java.io.Serializable;
-
-import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Data
 public class UserDeviceInfo implements Serializable{
@@ -26,6 +25,9 @@ public class UserDeviceInfo implements Serializable{
 	 
 	 @ApiModelProperty(value = "设备网卡mac地址")
 	 private String mac;
+
+	@ApiModelProperty(value = "'球多多', 10;'圣和彩店', 11;")
+	private String appCodeName;
 
 	 @ApiModelProperty(value = "宽")
 	 private String w;
