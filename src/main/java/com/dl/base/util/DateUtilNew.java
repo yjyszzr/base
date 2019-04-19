@@ -201,8 +201,9 @@ public class DateUtilNew {
 	public static String dateSubtractionHours(LocalDateTime start, LocalDateTime end) {
 		Duration d = Duration.between(start, end);
 		StringBuilder subTime = new StringBuilder();
-		subTime.append(Float.valueOf(d.toMinutes()) / 60).append("/");
-		subTime.append(d.toHours() + "小时" + (d.toMinutes() % 60) + "分");
+//		subTime.append(Float.valueOf(d.toMinutes()) / 60).append("/");
+//		subTime.append(d.toHours() + "小时" + (d.toMinutes() % 60) + "分" + (d.toMinutes() % 3600) + "秒");
+		subTime.append(d.getSeconds());
 		return subTime.toString();
 	}
 
