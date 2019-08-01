@@ -13,7 +13,7 @@ public enum BasketBallHILOLeverlEnum {
 	HILO_V_LEV3("9", "11-15分"),
 	HILO_V_LEV4("10", "16-20分"),
 	HILO_V_LEV5("11", "21-25分"),
-	HILO_V_LEV6("12", "26分+");
+	HILO_V_LEV6("12", "26+分");
 
 	
 	private String code;
