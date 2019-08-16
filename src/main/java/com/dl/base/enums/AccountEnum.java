@@ -2,7 +2,7 @@ package com.dl.base.enums;
 
 public enum AccountEnum {
 	
-	//1-奖金 2-充值 3-购彩 4-提现 5-红包 6-账户回滚
+	//1-奖金 2-充值 3-购彩 4-提现 5-红包 6-账户回滚 13-活动收益
 	REWARD(1, "奖金","奖"),
     RECHARGE(2, "充值","充"),
     BUYPAY(3, "购彩","购"),
@@ -10,6 +10,7 @@ public enum AccountEnum {
     BONUS(5, "红包","红"),
     MONEY_ROLLBACK(6, "资金已退回","退"),
 	BACK_MONEY(8, "退款","退"),
+	ACTIVITY_REWARD(13, "活动收益","益"),
 	BEYOND_ENTER_MONEY(9, "错误","误");
 
 	private Integer code;
