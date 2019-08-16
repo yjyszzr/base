@@ -10,7 +10,7 @@ public enum AccountEnum {
     BONUS(5, "红包","红"),
     MONEY_ROLLBACK(6, "资金已退回","退"),
 	BACK_MONEY(8, "退款","退"),
-	ACTIVITY_REWARD(13, "活动收益","益"),
+	ACTIVITY_REWARD(13, "收益","益"),
 	BEYOND_ENTER_MONEY(9, "错误","误");
 
 	private Integer code;
