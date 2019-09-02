@@ -7,7 +7,7 @@ public enum BasketBallHILOLeverlEnum {
 	HILO_H_LEV3("3", "11-15分"),
 	HILO_H_LEV4("4", "16-20分"),
 	HILO_H_LEV5("5", "21-25分"),
-	HILO_H_LEV6("6", "26分+"),
+	HILO_H_LEV6("6", "26+分"),
 	HILO_V_LEV1("7", "1-5分"), 
 	HILO_V_LEV2("8", "6-10分"),
 	HILO_V_LEV3("9", "11-15分"),
