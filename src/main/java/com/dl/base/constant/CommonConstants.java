@@ -22,7 +22,7 @@ public class CommonConstants {
     public static final String JWT_KEY_NAME = "name";
 
     public static final String HTTP_HEADER_ADDRESS = "dl-address";
-    public static final String SMS_URL = "http://39.106.18.39:8080/sms/send";
+    public static final String SMS_URL = "http://49.232.65.109:8080/sms/send";
     
     
     public static final Integer BUSINESS_ID_REWARD = 9;
