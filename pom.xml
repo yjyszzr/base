@@ -43,10 +43,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-		    <groupId>com.netflix.servo</groupId>
-		    <artifactId>servo-apache</artifactId>
-		    <version>0.7.4</version>
-		</dependency>
+            <groupId>com.netflix.servo</groupId>
+            <artifactId>servo-apache</artifactId>
+            <version>0.7.4</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
@@ -58,13 +58,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>  
+        </dependency>
         <dependency>
-		    <groupId>com.netflix.servo</groupId>
-		    <artifactId>servo-apache</artifactId>
-		    <version>0.7.4</version>
-		</dependency>
-        
+            <groupId>com.netflix.servo</groupId>
+            <artifactId>servo-apache</artifactId>
+            <version>0.7.4</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
         <dependency>
@@ -135,10 +135,10 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-		    <groupId>com.belerweb</groupId>
-		    <artifactId>pinyin4j</artifactId>
-		    <version>2.5.0</version>
-		</dependency>
+            <groupId>com.belerweb</groupId>
+            <artifactId>pinyin4j</artifactId>
+            <version>2.5.0</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -155,12 +155,12 @@
         <repository>
             <id>deployRelease</id>
             <name>pugutang Internal Repository</name>
-            <url>http://39.107.121.76:8081/repository/maven-releases/</url>
+            <url>http://49.232.65.109:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>deploySnapshot</id>
             <name>pugutang Internal Repository</name>
-            <url>http://39.107.121.76:8081/repository/maven-snapshots/</url>
+            <url>http://49.232.65.109:8081/repository/maven-snapshots/</url>
             <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
     </distributionManagement>
